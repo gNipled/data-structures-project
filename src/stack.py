@@ -14,11 +14,13 @@ class Node:
 class Stack:
     """Класс для стека"""
 
-    top = None
-
     def __init__(self):
         """Конструктор класса Stack"""
-        pass
+        self.top = None
+        self.data_list = []
+
+    def __str__(self):
+        return '\n'.join(self.data_list)
 
     def push(self, data):
         """
@@ -28,6 +30,7 @@ class Stack:
         """
         new_node = Node(data, self.top)
         self.top = new_node
+        self.data_list.append(data)
 
     def pop(self):
         """
@@ -37,4 +40,5 @@ class Stack:
         """
         data = self.top.data
         self.top = self.top.next_node
+        self.data_list.pop(-1)
         return data
