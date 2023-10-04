@@ -5,6 +5,7 @@ from src.linked_list import LinkedList
 ll1 = LinkedList()
 ll2 = LinkedList()
 ll3 = LinkedList()
+ll4 = LinkedList()
 
 
 class TestLinkedList(unittest.TestCase):
@@ -30,3 +31,17 @@ class TestLinkedList(unittest.TestCase):
         ll3.insert_at_end({'id': 3})
         ll3.insert_beginning({'id': 0})
         self.assertEquals(str(ll3), "{'id': 0} -> {'id': 1} -> {'id': 2} -> {'id': 3} -> None")
+
+    def test_to_list(self):
+        self.assertEquals(len(LinkedList().to_list()), 0)
+        self.assertEquals(len(ll3.to_list()), 4)
+
+    def test_get_data_by_id(self):
+        ll4.insert_at_end({'id': 1})
+        ll4.insert_at_end({45,23,1})
+        ll4.insert_at_end('id45user1name')
+        ll4.insert_at_end([45, 45, 45, 1])
+        self.assertEquals(type(ll4.get_data_by_id(1)), dict)
+        self.assertIsNone(ll4.get_data_by_id(45))
+
+
